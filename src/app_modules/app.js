@@ -48,8 +48,12 @@ function($stateProvider, $urlRouterProvider)
             url:'/stock-list',
             templateUrl:'app_modules/modules/stock/list.html',
             controller:'StockListCtrl'
+        })
+        .state('api-console', {
+            url:'/api-console',
+            templateUrl:'app_modules/modules/api-console/api-console.html',
+            controller:'ApiConsoleCtrl'
         });
-    
 }])
 .config(['markedProvider', 'hljsServiceProvider', function(markedProvider, hljsServiceProvider) {
     // marked config
