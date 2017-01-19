@@ -365,6 +365,15 @@ gulp.task('default', function() {
     );
 });
 
+gulp.task('debug2', function() {
+    // runSequenceのSubFunctionは、終了を待たずに次が実行されてしまう為、
+    // build Task と同じものを指定
+    return　runSequence(
+        '_clean', '_sass', ['_copy_js', '_copy_libs', '_copy_html', '_copy_css', '_ts'], ['_copy_etc'], ['_webserver']
+    );
+});
+
+
 // 4.テスト実行
 
 

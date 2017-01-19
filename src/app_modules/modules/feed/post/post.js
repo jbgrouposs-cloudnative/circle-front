@@ -4,7 +4,8 @@ angular.module('FeedPostCtrl',[]).controller('FeedPostCtrl',[
 	'$scope',
 	'$state',
 	'marked',
-	function($stateParams, $rootScope, $scope, $state, marked){
+	'Restangular',
+	function($stateParams, $rootScope, $scope, $state, marked, Restangular){
 		$scope.feed = {
 			feedTitle: '',
 			feedTag: ''
@@ -24,13 +25,12 @@ angular.module('FeedPostCtrl',[]).controller('FeedPostCtrl',[
 			e.hidePreview();
 		};
 
-		$scope.postFeedData = function(feedData){
-			var postData = {
-				feedTitle: feedData.feedTitle,
-				feedTag: feedData.feedTag,
-				feedContents: $scope.editorValue
-			};
-			//console.log(JSON.stringify(postData));
+		$scope.postArticle = function(feedData){
+			Restangular.all("articles").post({
+				Title: feedData.feedTitle,
+				Body: $scope.editorValue
+			});
+
 			$state.go('feed-list', {}, {reload: true});
 		};
 	}

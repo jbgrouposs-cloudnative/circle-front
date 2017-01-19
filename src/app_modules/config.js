@@ -4,8 +4,8 @@ angular.module('config').config([
 	'ApiUrlConstant',
 	function(RestangularProvider, ApiUrlConstant){
 	    //JSONP Setting
-		RestangularProvider.setJsonp(true);
-		RestangularProvider.setDefaultRequestParams('jsonp', {callback: 'JSON_CALLBACK'});
+		//RestangularProvider.setJsonp(true);
+		//RestangularProvider.setDefaultRequestParams('jsonp', {callback: 'JSON_CALLBACK'});
 
 		//RestangularProvider.setDefaultHeaders({'Authorization': ""});
 		//RestangularProvider.setDefaultHeaders({'X-XSRF-TOKEN': CSRF_TOKEN});
@@ -20,7 +20,7 @@ angular.module('config').run([
     'ApiUrlConstant',
     function($rootScope, $state, $location, Restangular, ApiUrlConstant){
         //Lambda REST APIのベースURL設定
-        Restangular.setBaseUrl(ApiUrlConstant.lambdaBase);
+        Restangular.setBaseUrl(ApiUrlConstant.base_path);
         Restangular.setFullResponse(true);
     }
 ]);

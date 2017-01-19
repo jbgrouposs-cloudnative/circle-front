@@ -34,8 +34,7 @@ function($stateProvider, $urlRouterProvider)
             controller:'FeedListCtrl'
         })
         .state('feed-list.feed-detail',{
-            url:'/feed-detail',
-            params: {itemData: null},
+            url:'/feed-detail/:id',
             templateUrl:'app_modules/modules/feed/detail/detail.html',
             controller:'FeedDetailCtrl'
         })
