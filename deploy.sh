@@ -109,7 +109,9 @@ echo Handling node.js deployment.
 # 2. Select node version
 #selectNodeVersion
 
-cd $DEPLOYMENT_TARGET
+pwd
+cd $DEPLOYMENT_TARGET/dev
+pwd
 
 # 3. Install npm packages
 $NPM_CMD install
