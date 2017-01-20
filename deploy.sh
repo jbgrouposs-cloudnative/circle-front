@@ -110,14 +110,15 @@ fi
 selectNodeVersion
 
 # 3. Install npm packages
+cd $DEPLOYMENT_TARGET
 eval $NPM_CMD install
 
 # 4. Install bower packages & filecopy
-bower install
-gulp bower-filecopy
+eval bower install
+eval gulp bower-filecopy
 
 # 5. build
-gulp build
+eval gulp build
 
 ##################################################################################################################################
 echo "Finished successfully."
