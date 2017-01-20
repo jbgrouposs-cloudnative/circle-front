@@ -101,24 +101,25 @@ selectNodeVersion () {
 echo Handling node.js deployment.
 
 # 1. KuduSync
-if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
-  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
-  exitWithMessageOnError "Kudu Sync failed"
-fi
+#if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
+#  "$KUDU_SYNC_CMD" -v 50 -f "$DEPLOYMENT_SOURCE" -t "$DEPLOYMENT_TARGET" -n "$NEXT_MANIFEST_PATH" -p "$PREVIOUS_MANIFEST_PATH" -i ".git;.hg;.deployment;deploy.sh"
+#  exitWithMessageOnError "Kudu Sync failed"
+#fi
 
 # 2. Select node version
-selectNodeVersion
+#selectNodeVersion
+
+cd $DEPLOYMENT_TARGET
 
 # 3. Install npm packages
-cd $DEPLOYMENT_TARGET
 eval $NPM_CMD install
 
 # 4. Install bower packages & filecopy
-eval bower install
-eval gulp bower-filecopy
+eval ./node_modules/.bin/bower install
+eval ./node_modules/.bin/gulp bower-filecopy
 
 # 5. build
-eval gulp build
+eval ./node_modules/.bin/gulp build
 
 ##################################################################################################################################
 echo "Finished successfully."
