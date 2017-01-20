@@ -6,20 +6,22 @@ angular.module('FeedDetailCtrl',[]).controller('FeedDetailCtrl',[
 	'marked',
 	'Restangular',
 	function($stateParams, $rootScope, $scope, $state, marked, Restangular){
-		var article_id = $scope.id;
+		var article_id = $stateParams.id;
+		
+		console.log($scope.id);
 
-		Restangular.one("articles", article_id).get().then(function(article){
-			console.log("get articles/"+article_id);
-			console.log(article);
+		Restangular.one("articles", article_id).get().then(function(response){
+			console.log("get articles/"+article_id+" response");
+			console.log(response);
 
-			$scope.article = article;
+			$scope.article = response.data;
 		});
 
-		Restangular.one("articles", article_id).all("comments").getList().then(function(comments){
-			console.log("get articles/"+article_id+"/comments");
-			console.log(comments);
+		Restangular.one("articles", article_id).all("comments").getList().then(function(response){
+			console.log("get articles/"+article_id+"/comments response");
+			console.log(response);
 
-			$scope.comments = comments;
+			$scope.comments = response.data;
 		});
 
 		// コメント投稿
