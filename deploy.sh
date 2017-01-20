@@ -112,14 +112,18 @@ echo Handling node.js deployment.
 cd $DEPLOYMENT_TARGET
 
 # 3. Install npm packages
-eval $NPM_CMD install
+$NPM_CMD install
 
-# 4. Install bower packages & filecopy
-eval $DEPLOYMENT_TARGET/node_modules/.bin/bower install
-eval $DEPLOYMENT_TARGET/node_modules/.bin/gulp bower-filecopy
+# Install bower & gulp
+$NPM_CMD install bower
+$NPM_CMD install gulp
 
-# 5. build
-eval $DEPLOYMENT_TARGET/node_modules/.bin/gulp build
+bower install
+gulp bower-filecopy
+
+gulp build
+
+pwd
 
 ##################################################################################################################################
 echo "Finished successfully."
