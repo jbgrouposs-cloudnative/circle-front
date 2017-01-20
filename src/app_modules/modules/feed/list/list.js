@@ -11,11 +11,11 @@ angular.module('FeedListCtrl',[]).controller('FeedListCtrl',[
 		/**
 		 * フィード一覧を取得します。
 		 */
-		Restangular.all("articles").getList().then(function(articles) {
-			console.log("get articles");
-			console.log(articles);
+		Restangular.all("articles").getList().then(function(response) {
+			console.log("get articles response");
+			console.log(response);
 
-			$scope.articles = articles;
+			$scope.articles = response.data;
 		});
 	}
 ]);

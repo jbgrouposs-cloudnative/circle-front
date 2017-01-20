@@ -20,7 +20,7 @@ var app = angular.module('app',
      '$urlRouterProvider',
 function($stateProvider, $urlRouterProvider)
 {
-    $urlRouterProvider.otherwise('/feed-list');
+    $urlRouterProvider.otherwise('/feeds');
 
     $stateProvider
         .state('main',{
@@ -29,17 +29,17 @@ function($stateProvider, $urlRouterProvider)
             controller:'MainCtrl'
         })
         .state('feed-list',{
-            url:'/feed-list',
+            url:'/feeds',
             templateUrl:'app_modules/modules/feed/list/list.html',
             controller:'FeedListCtrl'
         })
         .state('feed-list.feed-detail',{
-            url:'/feed-detail/:id',
+            url:'/:id',
             templateUrl:'app_modules/modules/feed/detail/detail.html',
             controller:'FeedDetailCtrl'
         })
         .state('feed-list.feed-post',{
-            url:'/feed-post',
+            url:'/post',
             templateUrl:'app_modules/modules/feed/post/post.html',
             controller:'FeedPostCtrl'
         })
