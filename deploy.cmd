@@ -60,11 +60,15 @@ IF /I "%IN_PLACE_DEPLOYMENT%" NEQ "1" (
   IF !ERRORLEVEL! NEQ 0 goto error
 )
 
-pushd dev
+pushd "%DEPLOYMENT_TARGET%\dev"
+
+echo Install npm packages.
 call npm install
 
+echo Install bower packages.
 call bower install
 
+echo Deployment to release folder.
 call gulp bower-filecopy
 call gulp build
 ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
