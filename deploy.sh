@@ -115,11 +115,11 @@ cd $DEPLOYMENT_TARGET
 eval $NPM_CMD install
 
 # 4. Install bower packages & filecopy
-eval ./node_modules/.bin/bower install
-eval ./node_modules/.bin/gulp bower-filecopy
+eval $DEPLOYMENT_TARGET/node_modules/.bin/bower install
+eval $DEPLOYMENT_TARGET/node_modules/.bin/gulp bower-filecopy
 
 # 5. build
-eval ./node_modules/.bin/gulp build
+eval $DEPLOYMENT_TARGET/node_modules/.bin/gulp build
 
 ##################################################################################################################################
 echo "Finished successfully."
